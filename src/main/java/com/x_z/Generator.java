@@ -1,4 +1,4 @@
-package x_z;
+package com.x_z;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
