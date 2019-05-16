@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
 
-    <!--导入属性配置文件-->
+    <!--导入数据库连接配置文件-->
     <properties resource="datasource.properties"/>
 
     <!--<classPathEntry location="E:\repositories\mysql\mysql-connector-java\8.0.11\mysql-connector-java-8.0.11.jar"/>-->
@@ -40,18 +40,9 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
+        <!--需要生成代码的表-->
         <table tableName="t_sys_user" domainObjectName="SysUser" enableCountByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" enableUpdateByExample="false"/>
-
-        <table tableName="t_sys_role" domainObjectName="SysRole" enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="false"/>
-
-        <table tableName="t_sys_permission" domainObjectName="SysPermission" enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="false"/>
-
-        <table tableName="t_sys_role_permission" domainObjectName="SysRolePermission" enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="false"/>
-
 
     </context>
 </generatorConfiguration>
