@@ -8,18 +8,25 @@
     <properties resource="datasource.properties"/>
 
     <!--<classPathEntry location="E:\repositories\mysql\mysql-connector-java\8.0.11\mysql-connector-java-8.0.11.jar"/>-->
-    <classPathEntry location="${db.driverPath}" />
+    <classPathEntry location="${db.driverPath}"/>
     <context id="context" targetRuntime="MyBatis3">
-        <commentGenerator>
+        <!--序列化model类-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--使用自定义的注释生成插件-->
+        <commentGenerator type="com.x_z.MyCommentGenerator">
             <property name="suppressAllComments" value="true"/>
             <property name="suppressDate" value="true"/>
+            <!-- 格式化java代码 -->
+            <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+            <!-- 格式化XML代码 -->
+            <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
         </commentGenerator>
 
         <jdbcConnection userId="${db.username}"
                         password="${db.password}"
                         driverClass="${db.driverClass}"
                         connectionURL="${db.url}">
-        <!--修复逆向生成实体类字段不全的问题-->
+            <!--修复逆向生成实体类字段不全的问题-->
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
@@ -27,7 +34,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.free.onroute.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -36,13 +43,17 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.free.onroute.mapper" type="XMLMAPPER" targetProject="src/main/java">
+        <javaClientGenerator targetPackage="com.mapper" type="XMLMAPPER" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
         <!--需要生成代码的表-->
-        <table tableName="t_sys_user" domainObjectName="SysUser" enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="false"/>
+        <!--        <table tableName="t_sys_user" domainObjectName="SysUser" enableCountByExample="true" enableDeleteByExample="true"-->
+        <!--               enableSelectByExample="true" enableUpdateByExample="false"/>-->
+
+        <table tableName="mt_send_maintain_formid_48" domainObjectName="MtSendMaintain" enableCountByExample="true">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>
