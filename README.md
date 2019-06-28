@@ -1,4 +1,5 @@
-# mybatis_generator
+# 项目名称
+mybatis-plus-generator
 
 #### 项目介绍
 mybatis-plus逆向工程
